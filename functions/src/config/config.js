@@ -1,5 +1,5 @@
 //config response
-require('dotenv').config();
+
 
 function response(res, data, status, message) {
   if (status) {

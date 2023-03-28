@@ -1,7 +1,7 @@
 // const { config } = require('dotenv');
 const config = require('../../config/config.js')
 const db = require('../../config/dbConfig.js')
-require('dotenv').config();
+
 
 /** 
  * 
