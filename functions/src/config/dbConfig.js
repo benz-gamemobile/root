@@ -14,6 +14,12 @@ const sequelize = new Sequelize(config.db.database, config.db.user, config.db.pa
   },
 });
 
+// const sequelize = new Sequelize(config.db);
+
+sequelize.authenticate()
+  .then(() => console.log('Connection has been established successfully.'))
+  .catch((error) => console.error('Unable to connect to the database:', error));
+
 //create model
 const db = {}
 db.User = require("../api/user/model.js")(sequelize, DataTypes)
