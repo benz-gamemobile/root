@@ -1,8 +1,9 @@
 const { Sequelize, DataTypes } = require('sequelize');
+const config = require('./config.js')
 
 // Khởi tạo Sequelize với pool
-const sequelize = new Sequelize(process.env.DATABASE_MYSQL, process.env.USER_MYSQL, process.env.PASSWORD_MYSQL, {
-  host: process.env.HOST_MYSQL,
+const sequelize = new Sequelize(config.db.database, config.db.user, config.db.password, {
+  host: config.db.host,
   dialect: 'mysql',
   dialectModule: require('mysql2'),
   pool: {
