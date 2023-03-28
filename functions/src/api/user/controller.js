@@ -1,3 +1,5 @@
+// const { config } = require('dotenv');
+const config = require('../../config/config.js')
 const db = require('../../config/dbConfig.js')
 require('dotenv').config();
 
@@ -20,7 +22,8 @@ const getListUser = async (req, res) => {
   console.log(222222, 'sai ở đâu à');
 
   let a = {}
-  a.name = 'process.env.USER_MYSQL'
+  a.name = process.env.USER_MYSQL
+  a.birthDay2 = config.db.host
   a.email = 'conkhicon'
 
   result.push(a)
