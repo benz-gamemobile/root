@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: true })); /* bodyParser.urlencoded() is d
 //connect to routes
 require("./src/api/routes.js")(app);
 
+app.use('/.netlify/functions/server', router);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
