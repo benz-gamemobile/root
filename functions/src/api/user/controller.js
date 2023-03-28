@@ -24,6 +24,7 @@ const getListUser = async (req, res) => {
   let a = {}
   a.name = process.env.USER_MYSQL
   a.birthDay2 = config.db.host
+  a.birthDay3 = config.benz
   a.email = 'conkhicon'
 
   result.push(a)

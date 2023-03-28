@@ -13,6 +13,7 @@ function response(res, data, status, message) {
 }
 
 module.exports = {
+  benz: 'lại là tôi đây',
   db: {
     user: process.env.USER_MYSQL,
     password: process.env.PASSWORD_MYSQL,
