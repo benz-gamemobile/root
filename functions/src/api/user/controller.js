@@ -15,6 +15,7 @@ const createUser = async (req, res) => {
 const getListUser = async (req, res) => {
 
   const result = await db.db.User.findAll({raw: true})
+  console.log(111111, process.env.USER_MYSQL);
   res.json(result)
 }
 
