@@ -4,7 +4,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(process.env.DATABASE_MYSQL, process.env.USER_MYSQL, process.env.PASSWORD_MYSQL, {
   host: process.env.HOST_MYSQL,
   dialect: 'mysql',
-  // dialectModule: require('mysql2'),
+  dialectModule: require('mysql2'),
   pool: {
     max: 10,  // Số lượng kết nối tối đa được mở cùng một lúc
     min: 0,   // Số lượng kết nối tối thiểu trong pool
