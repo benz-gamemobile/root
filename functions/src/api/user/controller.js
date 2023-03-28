@@ -18,11 +18,10 @@ const createUser = async (req, res) => {
 const getListUser = async (req, res) => {
 
   const result = await db.db.User.findAll({raw: true})
-  console.log(111111, process.env.USER_MYSQL);
-  console.log(222222, 'sai ở đâu à');
 
   let a = {}
   a.name = process.env.USER_MYSQL
+  a.hhhhhhhh = process.env.HOST_MYSQL
   a.birthDay2 = config.db.host
   a.birthDay3 = config.benz
   a.email = 'conkhicon'
