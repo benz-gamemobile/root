@@ -1,5 +1,6 @@
 require('dotenv').config()
 const config = require("./src/config/config.js")
+const serverless = require('serverless-http');
 let express = require('express');
 let cors = require('cors');
 
