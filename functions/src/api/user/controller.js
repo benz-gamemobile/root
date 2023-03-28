@@ -1,4 +1,5 @@
 const db = require('../../config/dbConfig.js')
+require('dotenv').config();
 
 /** 
  * 
@@ -16,6 +17,7 @@ const getListUser = async (req, res) => {
 
   const result = await db.db.User.findAll({raw: true})
   console.log(111111, process.env.USER_MYSQL);
+  console.log(222222, 'sai ở đâu à');
   res.json(result)
 }
 
