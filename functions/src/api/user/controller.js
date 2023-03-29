@@ -174,6 +174,7 @@ const deleteUser = async (req, res) => {
       //handle data
       const result = await db.db.User.destroy({ where: { id: id } })
 
+      //return result
       if (result) {
         commonHelpers.response(res, config.is_result.success, config.http_status.success, req.__('user.delete.success'))
       } else {

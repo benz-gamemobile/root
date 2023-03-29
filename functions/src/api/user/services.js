@@ -32,10 +32,12 @@ const findAllUser = async (searchObj, isCount) => {
       }
     }
 
+    //order by
     if (!isCount) {
       sql += ' order by us.updated_at desc, us.name asc ';
     }
 
+    //count or limit
     if (!isCount) {
       if (!searchObj.getAll) {
         sql += ` limit ${searchObj.size} offset ${searchObj.page * searchObj.size}`;
@@ -44,6 +46,7 @@ const findAllUser = async (searchObj, isCount) => {
       sql = `select count(*) as count from (${sql}) a`;
     }
 
+    //handle sql
     let dataUser = await db.db.sequelize.query(sql, {
       type: db.db.sequelize.QueryTypes.SELECT
     });
