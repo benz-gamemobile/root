@@ -11,6 +11,7 @@ const moment = require("moment");
 */
 const createUser = async (req, res) => {
   try {
+    // await commonHelpers.audit(body, req, false)
     const result = await db.db.User.create(req.body)
 
     if (result) {
@@ -29,9 +30,9 @@ const createUser = async (req, res) => {
  * created_by: ben
  * created_at: 28/03/2023
  */
-const handleData = async (dataUser) => {
+const handleDataFindUser = async (dataUser) => {
   try {
-    for(let data of dataUser){
+    for (let data of dataUser) {
       //handle time
       data.createdAt = moment(data.createdAt).subtract(7, 'hours').format(config.date_format.YYYY_MM_DD_HH_mm_ss)
       data.updatedAt = moment(data.updatedAt).subtract(7, 'hours').format(config.date_format.YYYY_MM_DD_HH_mm_ss)
@@ -68,7 +69,7 @@ const getListUser = async (req, res) => {
 
     if (dataUser && dataUser.length) {
       //handle data
-      await handleData(dataUser)
+      await handleDataFindUser(dataUser)
 
       //return data
       commonHelpers.response(res, dataUser, config.http_status.success, req.__('user.find.success'))
@@ -95,7 +96,7 @@ const getDetailUser = async (req, res) => {
 
     if (dataUser) {
       //handle data
-      await handleData([dataUser])
+      await handleDataFindUser([dataUser])
 
       commonHelpers.response(res, dataUser, config.http_status.success, req.__('user.find.success'))
     } else {
@@ -104,6 +105,23 @@ const getDetailUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     commonHelpers.response(res, null, config.http_status.bad_request, req.__('system.error'))
+  }
+}
+
+/** 
+ * created_by: ben
+ * created_at: 28/03/2023
+*/
+const handleUpdateUser = async (body) => {
+  try {
+    //get data
+    const isUpdateSuccess = await db.db.User.update(body, { where: { id: body.id } })
+
+    //return data
+    return isUpdateSuccess[0]
+
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -123,8 +141,10 @@ const updateUser = async (req, res) => {
 
     if (userExist) {
       //handle data
-      const result = await userService.handleUpdateUser(body)
+      // await commonHelpers.audit(body, req, true)
+      const result = await handleUpdateUser(body)
 
+      //return result
       if (result) {
         commonHelpers.response(res, config.is_result.success, config.http_status.success, req.__('user.update.success'))
       } else {
@@ -152,7 +172,7 @@ const deleteUser = async (req, res) => {
 
     if (userExist) {
       //handle data
-      const result = await db.db.User.destroy({where: {id: id}})
+      const result = await db.db.User.destroy({ where: { id: id } })
 
       if (result) {
         commonHelpers.response(res, config.is_result.success, config.http_status.success, req.__('user.delete.success'))

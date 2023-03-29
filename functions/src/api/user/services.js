@@ -3,22 +3,6 @@ const db = require('../../config/dbConfig')
 
 /** 
  * created_by: ben
- * created_at: 28/03/2023
-*/
-const handleUpdateUser = async (body) => {
-  try {
-    //get data
-    const isUpdateSuccess = await db.db.User.update(body, { where: { id: body.id } })
-
-    //return data
-    return isUpdateSuccess[0]
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-/** 
- * created_by: ben
  * created_at: 29/03/2023
 */
 const findAllUser = async (searchObj, isCount) => {
@@ -72,6 +56,5 @@ const findAllUser = async (searchObj, isCount) => {
 }
 
 module.exports = {
-  handleUpdateUser,
   findAllUser
 }
