@@ -26,4 +26,20 @@ router.get('/users/:id', (req,res,next) => {
     return userController.getDetailUser(req,res)
 })
 
+/**
+ * Description: method update user
+ * Created: DVBen(28/03/2023)
+*/
+router.put('/users/:id', (req,res,next) => {
+    return userController.updateUser(req,res)
+})
+
+/**
+ * Description: method delete user
+ * Created: DVBen(28/03/2023)
+*/
+router.delete('/users/:id', (req,res,next) => {
+    return userController.deleteUser(req,res)
+})
+
 module.exports = router

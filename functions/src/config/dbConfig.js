@@ -21,6 +21,9 @@ sequelize.authenticate()
 
 //create model
 const db = {}
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
 db.User = require("../api/user/model.js")(sequelize, DataTypes)
 
 module.exports = {

@@ -1,0 +1,11 @@
+{
+  "user.create.success": "Thêm mới thông tin người dùng thành công",
+  "user.create.failed": "Thêm mới thông tin người dùng thất bại",
+  "user.find.success": "Tìm kiếm thông tin người dùng thành công",
+  "user.find.failed": "Tìm kiếm thông tin người dùng thất bại",
+  "user.update.success": "Cập nhật thông tin người dùng thành công",
+  "user.update.failed": "Cập nhật thông tin người dùng thất bại",
+  "user.delete.success": "Xóa thông tin người dùng thành công",
+  "user.delete.failed": "Xóa thông tin người dùng thất bại",
+	"system.error": "Lỗi hệ thống"
+}
